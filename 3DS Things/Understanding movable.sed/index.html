@@ -101,17 +101,25 @@
                 <h1 id="understanding-movablesed">Understanding movable.sed</h1>
 <p>movable.sed is the 3DS consoles encryption key. It is how Nintendo keeps save data, games, DSiWare exports, etc. exclusive <em>to the console they came from.</em>
 This file is present on CTRNAND in the <code>private</code> folder. It is 320 bytes (with CMAC) or 288 bytes (without CMAC). </p>
-<p>The movable is constructed of the following;
-- The "SEED" magic at the start of the file
-- A 'flag' to indicate the presence of a CMAC(?)
-    - If this is set to 01, the 3DS will expect a CMAC to be at the end of the file. <em>If it isn't there, it will not boot.</em>
-- LocalFriendCodeSeed_B (copied from CTRNAND/rw/sys)
-- The "keyY", or the actual 'encryption key' part of the file
-- A CMAC</p>
-<p>From my testing, a 3DS will not boot if this file is empty or improperly formatted. The following is required for booting;
-- The "SEED" magic at the start of the file
-- The "keyY", or the actual 'encryption key' part of the file
-    - This configuration of the file is the bare minimum and will allow a console to boot.</p>
+<p>The movable is constructed of the following;</p>
+<ul>
+<li>The "SEED" magic at the start of the file</li>
+<li>A 'flag' to indicate the presence of a CMAC(?)<ul>
+<li>If this is set to 01, the 3DS will expect a CMAC to be at the end of the file. <em>If it isn't there, it will not boot.</em></li>
+</ul>
+</li>
+<li>LocalFriendCodeSeed_B (copied from CTRNAND/rw/sys)</li>
+<li>The "keyY", or the actual 'encryption key' part of the file</li>
+<li>A CMAC</li>
+</ul>
+<p>From my testing, a 3DS will not boot if this file is empty or improperly formatted. The following is required for booting;</p>
+<ul>
+<li>The "SEED" magic at the start of the file</li>
+<li>The "keyY", or the actual 'encryption key' part of the file<ul>
+<li>This configuration of the file is the bare minimum and will allow a console to boot.</li>
+</ul>
+</li>
+</ul>
 <h2 id="sources">Sources</h2>
 <ul>
 <li><a href="https://www.3dbrew.org/wiki/Nand/private/movable.sed">3dbrew's page on movable.sed</a></li>
