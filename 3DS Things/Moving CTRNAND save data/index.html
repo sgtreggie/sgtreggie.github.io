@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Moving CTRNAND save data - Reggie Documents Things</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Moving CTRNAND save data";
+    var mkdocs_page_input_path = "3DS Things\\Moving CTRNAND save data.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Reggie Documents Things</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Welcome</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">3DS Things</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Moving CTRNAND save data</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#sources">Sources</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Understanding%20movable.sed/">Understanding movable.sed</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Reggie Documents Things</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>3DS Things &raquo;</li>
+        
+      
+    
+    <li>Moving CTRNAND save data</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="moving-ctrnand-save-data">Moving CTRNAND save data</h1>
+<ul>
+<li>This is not a guide. <strong>DO NOT ATTEMPT WHAT YOU SEE HERE UNLESS YOU KNOW WHAT YOU'RE DOING.</strong></li>
+</ul>
+<p>Tonight <code>(03/20/22)</code>, I was assisting others with hacking their consoles and resolving issues as usual, but while I was doing that, I'd found an intriguing issue.
+A guy had come in and asked if he could restore his NAND and pull save data from the SD data after formatting it. At first, this seemed like a weird question, but after elaboration he'd described that he wanted to extract save data from a NAND backup for Activity Log.</p>
+<p>Now, I've never seen a question like this before. Hell, I've never even <em>attempted</em> something like this before. If I were use a <code>movable.sed</code> from another console, and extract <code>sysdata</code> folders from a NAND backup for that console, <em>could I possibly have my old system's CTRNAND save data on my new one?</em></p>
+<p>It seemed perfectly plausible. I wanted to assist the guy, but it was pretty late, and there was no telling if what I'd thought would <em>actually work.</em></p>
+<p>So I got to work and decided to try and learn something new. I firstly made a backup of my NAND, then followed <a href="https://redkerry135.github.io/hardware-broken-transfer/">Kerry's movable transfer guide</a> to move my New 2DS XL's <code>movable.sed</code> to my other console. I didn't do anything beyond the Replacing section, as I had no SD data that I was trying to replace.</p>
+<p>Now I needed some system save data to try. Using 3dbrew's <a href="https://www.3dbrew.org/wiki/System_SaveData">System SaveData page</a> I found the locations of a few different system saves. I chose Activity Log and Mii Maker as my examples. I copied the files to <code>sysdata</code> inside the <code>data/&lt;id0&gt;</code> and... it kinda worked. For the most part though, it didn't. At the very least, Activity Log had shown how many titles I'd played.</p>
+<p>From this, I had learned that <em>maybe</em> what I had in mind wouldn't be possible with only moving the <code>sysdata</code> foldesr of individual titles. Perhaps I could treat it like how a system transfer does and just move the entire <code>data</code> folder instead?</p>
+<p>So I opted for that instead. I copied the <em>entire</em> <code>data</code> folder from the source console to the target console. And the good news is that it worked, but, unfortunately, 3D was permanently stuck on.
+Forever. I couldn't get it to budge, the slider was no use, and it was really hurting my eyes. Unfortunately to fix this I had to delete the Config savegame, and that forced me to set up again. Pretty annoying.</p>
+<p>Thankfully after doing that it was gone, but so was everything else. So I had to figure out a be-all, end-all solution.</p>
+<p>What I did to fix everything was simple;</p>
+<ul>
+<li>Set up the console after pasting the movable</li>
+<li>Backup the config savegame in <code>data/&lt;id0&gt;/sysdata</code> named <code>00010017</code></li>
+<li>Paste the <code>data</code> folder from the NAND backup</li>
+<li>Paste the config savegame again</li>
+</ul>
+<p>And there it was, all of my data from the source console to the target. It was a great success. From what I could tell, other than the loss of config settings, everything was there.</p>
+<p>A little bit too much. The friends list and everything freaked me out because my friend code was there (as expected). So I deleted the friends list savegame and the friends module savegame (<code>00010032</code> for the module savegame, as for the other one it depends);</p>
+<ul>
+<li>USA: <code>00020096</code></li>
+<li>JPN: <code>0002008D</code></li>
+<li>EUR: <code>0002009F</code></li>
+</ul>
+<p>After that, everything was fine, and I was assigned a new friend code, easing my paranoia. Now all that would be needed is to get your games back onto the SD card (you can use your source systems SD card on the target if you wish), some <a href="https://github.com/ihaveamac/faketik/releases/tag/v1.1.2">faketik</a>, and <em>maybe</em> an NNID unlink from the source for use on the target. Think about it like getting a new phone and also getting your number changed.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>3dbrew's <a href="https://www.3dbrew.org/wiki/System_SaveData">System SaveData page</a></li>
+<li><a href="https://redkerry135.github.io/hardware-broken-transfer/">Kerry's movable transfer guide</a></li>
+<li>3dbrew's <a href="https://www.3dbrew.org/wiki/Config_Savegame">Config Savegame page</a></li>
+<li>Myself after torturing my console with 3 hours of testing</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Understanding%20movable.sed/" class="btn btn-neutral float-right" title="Understanding movable.sed">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../.." class="btn btn-neutral" title="Welcome"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../.." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Understanding%20movable.sed/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
