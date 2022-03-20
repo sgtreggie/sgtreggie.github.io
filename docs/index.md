@@ -1,6 +1,0 @@
-# Welcome
-
-This is a public site with writings, information, and stuff that I've learned.
-- *If you feel like the information here is imcomplete, incorrect, dated, etc. you may correct it via push request.*
-
-You may take a look around if you want.
