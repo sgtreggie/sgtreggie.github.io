@@ -100,7 +100,7 @@
               
                 <h1 id="understanding-movablesed">Understanding movable.sed</h1>
 <p>movable.sed is the 3DS consoles encryption key. It is how Nintendo keeps save data, games, DSiWare exports, etc. exclusive <em>to the console they came from.</em>
-This file is present on CTRNAND in the <code>private</code> folder. It is 320 bytes (with CMAC) or 288 bytes (without CMAC). </p>
+This file is present on <code>CTRNAND</code> in the <code>private</code> folder. It is 320 bytes (with CMAC) or 288 bytes (without CMAC). </p>
 <p>The movable is constructed of the following;</p>
 <ul>
 <li>The "SEED" magic at the start of the file</li>
@@ -108,7 +108,7 @@ This file is present on CTRNAND in the <code>private</code> folder. It is 320 by
 <li>If this is set to 01, the 3DS will expect a CMAC to be at the end of the file. <em>If it isn't there, it will not boot.</em></li>
 </ul>
 </li>
-<li>LocalFriendCodeSeed_B (copied from CTRNAND/rw/sys)</li>
+<li>LocalFriendCodeSeed_B (copied from <code>CTRNAND/rw/sys</code>)</li>
 <li>The "keyY", or the actual 'encryption key' part of the file</li>
 <li>A CMAC</li>
 </ul>
